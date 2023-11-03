@@ -7,21 +7,18 @@ import CreatePokemonForm from './CreatePokemonForm';
 import Fab from './Fab';
 import { getPokemon } from '../store/pokemon';
 
+
 const PokemonBrowser = () => {
   const dispatch = useDispatch();
-  const { pokemonId } = useParams();
+  const pokemonId = useParams();
   const pokemon = useSelector(state => {
     return state.pokemon.list.map(pokemonId => state.pokemon[pokemonId]);
   });
   const [showForm, setShowForm] = useState(false);
 
-
-
   useEffect(() => { 
     dispatch(getPokemon())
-
   }, [dispatch]);
-
 
   if (!pokemon) {
     return null;
